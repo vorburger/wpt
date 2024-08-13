@@ -23,6 +23,7 @@ def update(tests_root: str,
            manifest_path: Optional[str] = None,
            working_copy: bool = True,
            cache_root: Optional[str] = None,
+           subdirs_to_update: Optional[List[Text]] = None,
            rebuild: bool = False,
            parallel: bool = True
            ) -> bool:
@@ -30,7 +31,7 @@ def update(tests_root: str,
     logger.info("Updating manifest")
 
     tree = vcs.get_tree(tests_root, manifest, manifest_path, cache_root,
-                        working_copy, rebuild)
+                        subdirs_to_update, working_copy, rebuild)
     return manifest.update(tree, parallel)
 
 
