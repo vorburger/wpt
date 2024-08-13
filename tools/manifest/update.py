@@ -45,6 +45,7 @@ def update_from_cli(**kwargs: Any) -> None:
     manifest.load_and_update(tests_root,
                              path,
                              kwargs["url_base"],
+                             subdirs_to_update=kwargs['tests'],
                              update=True,
                              rebuild=kwargs["rebuild"],
                              cache_root=kwargs["cache_root"],
@@ -79,6 +80,9 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--no-parallel", dest="parallel", action="store_false", default=True,
         help="Do not parallelize building the manifest")
+    parser.add_argument('tests',
+                        nargs='*',
+                        help='Paths of test files or directories to update.')
     return parser
 
 
