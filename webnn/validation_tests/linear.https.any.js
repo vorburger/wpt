@@ -9,7 +9,7 @@
 
 validateInputFromAnotherBuilder('linear');
 
-validateUnaryOperation('linear', floatingPointTypes);
+validateSingleInputOperation('linear');
 
 promise_test(async t => {
   const builder = new MLGraphBuilder(context);
@@ -24,7 +24,7 @@ promise_test(async t => {
 promise_test(async t => {
   const builder = new MLGraphBuilder(context);
   const options = {beta: -Infinity};
-  const input = builder.input('input', {dataType: 'float16', dimensions: []});
+  const input = builder.input('input', {dataType: 'float32', dimensions: []});
   assert_throws_js(TypeError, () => builder.linear(input, options));
 }, '[linear] Throw if options.beta is -Infinity');
 

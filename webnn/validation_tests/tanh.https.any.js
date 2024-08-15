@@ -11,4 +11,4 @@ validateInputFromAnotherBuilder('tanh');
 
 const label = 'tanh-xxx';
 const regrexp = new RegExp('\\[' + label + '\\]');
-validateUnaryOperation('tanh', floatingPointTypes, label, regrexp);
+validateSingleInputOperation('tanh', label, regrexp);
